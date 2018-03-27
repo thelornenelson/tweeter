@@ -5,10 +5,6 @@ article.tweet {
   opacity: 0.6;
 }
 
-article.tweet:hover {
-  opacity: 1;
-}
-
 article.tweet header {
   background-color: #eee;
   border-radius: 5px 5px 0px 0px;
@@ -53,4 +49,10 @@ article.tweet .actions {
   float: right;
   margin-top: -6px;
   font-size: 1.5em;
+  opacity: 0;
+}
+
+article.tweet:hover, article.tweet:hover .actions {
+  opacity: 1;
+
 }
