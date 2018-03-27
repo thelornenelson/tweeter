@@ -24,12 +24,13 @@ article.tweet header img {
   height: 60px;
   width: 60px;
   border-radius: 10px;
+  margin-right: 12px;
 }
 
-article.tweet .username {
+/* article.tweet .username {
   float: left;
   margin-left: 12px;
-}
+} */
 
 article.tweet .handle {
   float: right;
@@ -48,7 +49,7 @@ article.tweet footer {
   font-size: 0.8em;
 }
 
-article.tweet footer span {
+article.tweet .actions {
   float: right;
   margin-top: -6px;
   font-size: 1.5em;
