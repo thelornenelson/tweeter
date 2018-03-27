@@ -2,6 +2,11 @@ article.tweet {
   border: solid grey 1px;
   border-radius: 5px;
   margin: 0.5em 2em;
+  opacity: 0.6;
+}
+
+article.tweet:hover {
+  opacity: 1;
 }
 
 article.tweet header {
@@ -14,14 +19,16 @@ article.tweet header {
 
 }
 
-article.tweet footer {
-  border-top: solid grey 1px;
-  padding: 0.5em;
-  font-size: 0.8em;
+article.tweet header img {
+  float: left;
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
 }
 
-article.tweet div {
-  padding: 1em;
+article.tweet .username {
+  float: left;
+  margin-left: 12px;
 }
 
 article.tweet .handle {
@@ -31,14 +38,18 @@ article.tweet .handle {
   margin-top: 6px;
 }
 
-article.tweet .username {
-  float: left;
-  margin-left: 12px;
+article.tweet div {
+  padding: 1em;
 }
 
-article.tweet header img {
-  float: left;
-  height: 60px;
-  width: 60px;
-  border-radius: 10px;
+article.tweet footer {
+  border-top: solid grey 1px;
+  padding: 0.5em;
+  font-size: 0.8em;
+}
+
+article.tweet footer span {
+  float: right;
+  margin-top: -6px;
+  font-size: 1.5em;
 }
