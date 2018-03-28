@@ -73,11 +73,26 @@ $(document).ready(function(){
     $footer.appendTo($article);
 
     // add footer data
-    $("<span>" + Math.round(((Date.now() - tweetData.created_at) / 86400000)) + " days ago" + "</span>").appendTo($footer);
+    $("<span>" + daysAgo(tweetData.created_at) + "</span>").appendTo($footer);
     $("<span>&#9873; &#11156; &#9829;</span>").addClass("actions").appendTo($footer);
 
     // returns complete tree of jQuery objects, ready for insertion into the DOM.
     return $article;
+  }
+
+  // returns the number of days between now and the day passed as parameter (millisecond time stamp)
+  // returns "Today", "Yesterday", or 2, 3, 4...
+  function daysAgo(date){
+    let difference = (Date.now() - date) / 86400000;
+    console.log(`difference = ${difference}`);
+    if(difference <= 1){
+      return "Today";
+    } else if(difference <= 2){
+      return "Yesterday";
+    } else {
+      return Math.round(difference) + " days ago";
+    }
+
   }
 
   // generates and inserts DOM nodes for tweets
