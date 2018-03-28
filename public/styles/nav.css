@@ -21,3 +21,25 @@
   font-size: 2em;
   line-height: 80px;
 }
+
+#nav-bar li {
+  list-style-type: none;
+  float: right;
+  position: relative;
+  height: 60px;
+  padding: 10px;
+  top: -6px;
+  border: solid black 1px;
+  border-radius: 5px;
+  background-color: white;
+  color: #00a087;
+  font-size: 1.5em;
+  line-height: 40px;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+#nav-bar li:hover {
+  opacity: 1;
+  color: black;
+}

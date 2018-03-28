@@ -6,18 +6,33 @@
 
 $(document).ready(function(){
 
+
+  // show/hide new tweet form
+  $("#button-compose").on("click", function(){
+    // slide form down/up
+    $("section.new-tweet").slideToggle("fast", function(){
+      // set focus to form once slide is done.
+      $("section.new-tweet textarea").focus();
+    });
+
+  });
+
   // Handle form submission
   $("form").on("submit", function(event){
-    event.preventDefault();
-    let $text = $(this).children("textarea").val();
-    if($text && $text.length <= 140){
 
-      // store form data for submission
+    // stop form from submitting
+    event.preventDefault();
+
+    // capture entered text
+    let $text = $(this).children("textarea").val();
+
+    if($text && $text.length <= 140){
+      //check if text is valid.
+      // store form data for submission in urlencoded format
       let data = $(this).serialize();
       // clear text input
       $(this).children("textarea").val("")
-
-      // submit data
+      // submit data and when done, reload tweets.
       $.post("/tweets", data).done(function(response){
         loadTweets();
       });
@@ -36,8 +51,6 @@ $(document).ready(function(){
     //create error message and insert into DOM
     $("<span>").addClass("error").text(message).insertAfter("form input[type=submit]");
   }
-
-
 
   // creates and returns element tree for a single tweet
   function createTweetElement(tweetData){
@@ -69,10 +82,16 @@ $(document).ready(function(){
 
   // generates and inserts DOM nodes for tweets
   function renderTweets(tweets) {
+
+    // create new container
     let $newTweets = $(`<div id="tweets-container">`);
+
+    // fill container with new tweets
     tweets.forEach(function(tweetData){
       $newTweets.prepend(createTweetElement(tweetData));
     });
+
+    // replace existing container with new, updated, full container.
     $('#tweets-container').replaceWith($newTweets);
   }
 
