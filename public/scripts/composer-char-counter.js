@@ -5,7 +5,7 @@ $(document).ready(function(){
 
       // Remove any error message as text has now changed. Will be re-added
       // if necessary during form submission
-      $(this).siblings(".error").remove();
+      $(this).siblings("span.error").remove();
 
       let counter = $(this).siblings(".counter");
       counter.text(lengthRemaining);

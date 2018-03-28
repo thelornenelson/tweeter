@@ -30,6 +30,10 @@ $(document).ready(function(){
 
   // add error message to tweet form. Removed on keyup in composer-char-counter.js
   function submissionError(message){
+    //remove previous error, if any
+    $("form span.error").remove();
+
+    //create error message and insert into DOM
     $("<span>").addClass("error").text(message).insertAfter("form input[type=submit]");
   }
 
