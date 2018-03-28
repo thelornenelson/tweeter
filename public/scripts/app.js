@@ -54,6 +54,15 @@ $(document).ready(function(){
      }
    ];
 
+  // Handle form submission
+  $("form").on("submit", function(event){
+    event.preventDefault();
+    let data = $(this).serialize();
+    $.post("/tweets", data).done(function(response){
+      console.log(response);
+    });
+  });
+
   // creates and returns element tree for a single tweet
   function createTweetElement(tweetData){
 
