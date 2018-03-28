@@ -23,3 +23,8 @@ section.new-tweet .counter {
 .over-length {
   color: red;
 }
+
+section.new-tweet .error {
+  color: red;
+  margin-left: 10px;
+}
