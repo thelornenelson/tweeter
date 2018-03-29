@@ -103,7 +103,7 @@ $(document).ready(function(){
 
     // fill container with new tweets
     tweets.forEach(function(tweetData){
-      $newTweets.prepend(createTweetElement(tweetData));
+      $newTweets.append(createTweetElement(tweetData));
     });
 
     // replace existing container with new, updated, full container.
