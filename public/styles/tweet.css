@@ -4,7 +4,6 @@ article.tweet {
   margin: 0.5em 2em;
   opacity: 0.6;
 }
-
 article.tweet header {
   background-color: #eee;
   border-radius: 5px 5px 0px 0px;
@@ -12,9 +11,7 @@ article.tweet header {
   font-weight: bold;
   padding: 12px;
   height: 84px;
-
 }
-
 article.tweet header img {
   float: left;
   height: 60px;
@@ -22,36 +19,26 @@ article.tweet header img {
   border-radius: 10px;
   margin-right: 12px;
 }
-
-/* article.tweet .username {
-  float: left;
-  margin-left: 12px;
-} */
-
 article.tweet .handle {
   float: right;
   font-weight: 300;
   font-size: 0.75em;
   margin-top: 6px;
 }
-
 article.tweet div {
   padding: 1em;
 }
-
 article.tweet footer {
   border-top: solid grey 1px;
   padding: 0.5em;
   font-size: 0.8em;
 }
-
 article.tweet .actions {
   float: right;
   margin-top: -6px;
   font-size: 1.5em;
   opacity: 0;
 }
-
 article.tweet:hover, article.tweet:hover .actions {
   opacity: 1;
 }

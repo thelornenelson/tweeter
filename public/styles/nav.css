@@ -8,20 +8,17 @@
   padding: 0px 2em;
   z-index: 2;
 }
-
 #nav-bar .logo {
   width: 80px;
   height: 80px;
   float: left;
 }
-
 #nav-bar .header {
   float: left;
   margin-left: 10px;
   font-size: 2em;
   line-height: 80px;
 }
-
 #nav-bar li {
   list-style-type: none;
   float: right;
@@ -38,7 +35,6 @@
   opacity: 0.9;
   cursor: pointer;
 }
-
 #nav-bar li:hover {
   opacity: 1;
   color: black;

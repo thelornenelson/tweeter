@@ -6,26 +6,22 @@ section.new-tweet {
   border: solid 1px grey;
   display: none;
 }
-
 section.new-tweet h2 {
   margin-top: 0;
   margin-bottom: 0.5em;
   border-bottom: solid 1px grey;
 }
-
 section.new-tweet textarea {
   width: 100%;
 }
-
 section.new-tweet .counter {
   float: right;
+}
+section.new-tweet .error {
+  color: red;
+  margin-left: 10px;
 }
 
 .over-length {
   color: red;
-}
-
-section.new-tweet .error {
-  color: red;
-  margin-left: 10px;
 }
