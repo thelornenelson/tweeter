@@ -1,18 +1,20 @@
+@import 'main-colors';
+
 section {
 
   &.new-tweet {
-    background-color: #eee;
+    background-color: $background-color;
     border-radius: 5px;
     margin: 0px 2em;
     padding: 12px;
-    border: solid 1px grey;
+    border: solid 1px $border-color;
     display: none;
   }
 
   &.new-tweet h2 {
     margin-top: 0;
     margin-bottom: 0.5em;
-    border-bottom: solid 1px grey;
+    border-bottom: solid 1px $border-color;
   }
 
   &.new-tweet textarea {

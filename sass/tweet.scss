@@ -1,13 +1,15 @@
+@import 'main-colors';
+
 article.tweet {
 
-  border: solid grey 1px;
+  border: solid 1px $border-color;
   border-radius: 5px;
   margin: 0.5em 2em;
   opacity: 0.6;
 
 
   header {
-    background-color: #eee;
+    background-color: $background-color;
     border-radius: 5px 5px 0px 0px;
     font-size: 1.5em;
     font-weight: bold;
@@ -36,7 +38,7 @@ article.tweet {
   }
 
   footer {
-    border-top: solid grey 1px;
+    border-top: solid 1px $border-color;
     padding: 0.5em;
     font-size: 0.8em;
   }
