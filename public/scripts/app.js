@@ -80,7 +80,7 @@ $(document).ready(function(){
 
     // add footer data
     $("<span>" + daysAgo(tweetData.created_at) + "</span>").appendTo($footer);
-    $(`<span class="like${likeActive}">&#9829;</span>`).data("mongo-id", tweetData._id).appendTo($(`<span class="actions">&#9873; &#11156;</span>`).appendTo($footer));
+    $(`<span class="like${likeActive} fas fa-heart"></span>`).data("mongo-id", tweetData._id).appendTo($(`<span class="actions"><span class="fas fa-flag"></span><span class="fas fa-retweet"></span></span>`).appendTo($footer));
 
     // returns complete tree of jQuery objects, ready for insertion into the DOM.
     return $article;
@@ -89,13 +89,39 @@ $(document).ready(function(){
   // returns the number of days between now and the day passed as parameter (millisecond time stamp)
   // returns "Today", "Yesterday", or 2, 3, 4...
   function daysAgo(date){
-    let difference = (Date.now() - date) / 86400000;
-    if(difference <= 1){
-      return "Today";
-    } else if(difference <= 2){
+    let s = "s";
+    let difference = Date.now() - date;
+    if(difference < 3600000) {
+
+      // less than 60 minutes ago
+      let rounded = Math.round(difference / 60000);
+      rounded == 1 ? s = "" : null ;
+      return rounded + ` minute${s} ago`;
+
+    } else if(difference < 84600000){
+
+      // less than 23.5 hours ago
+      let rounded = Math.round(difference / 3600000);
+      rounded == 1 ? s = "" : null ;
+      return rounded + ` hour${s} ago`;
+
+    } else if(difference < 2 * 86400000){
+
       return "Yesterday";
+
+    } else if(difference < 31449600000){
+
+      // less than 364 days ago
+      let rounded = Math.round(difference / 86400000);
+      rounded == 1 ? s = "" : null ;
+      return rounded + ` day${s} ago`;
+
     } else {
-      return Math.round(difference) + " days ago";
+
+      let rounded = Math.round(difference / 31536000000);
+      rounded == 1 ? s = "" : null ;
+      return rounded + ` year${s} ago`;
+      
     }
 
   }
