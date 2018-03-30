@@ -24,6 +24,9 @@ module.exports = function makeDataHelpers(db) {
 
       // find document in db and update to reverse "like" boolean.
       db.collection("tweets").findOne({"_id": id}, function(err, data){
+        if(data.like === undefined){
+          data.like = false;
+        }
         db.collection("tweets").updateOne({"_id": id}, { $set: {"like": !data.like} }, callback);
       });
     }
