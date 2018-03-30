@@ -4,3 +4,4 @@ node_modules/
 mongo_example.js
 mongo_update_test.js
 public/styles/
+checklist.numbers
