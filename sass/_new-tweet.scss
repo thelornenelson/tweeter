@@ -1,4 +1,3 @@
-@import 'main-colors';
 
 section {
 
@@ -27,11 +26,11 @@ section {
 
 
   &.new-tweet .error {
-    color: red;
+    color: $error;
     margin-left: 10px;
   }
 }
 
 .over-length {
-  color: red;
+  color: $error;
 }

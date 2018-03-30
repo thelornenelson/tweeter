@@ -1,0 +1,9 @@
+$background-color: #eee;
+$border-color: grey;
+$error: red;
+$like: red;
+
+@import 'layout';
+@import 'nav';
+@import 'tweet';
+@import 'new-tweet';

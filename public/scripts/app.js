@@ -6,7 +6,6 @@
 
 $(document).ready(function(){
 
-
   // show/hide new tweet form
   $("#button-compose").on("click", function(){
     // slide form down/up
@@ -28,14 +27,18 @@ $(document).ready(function(){
 
     if($text && $text.length <= 140){
       //check if text is valid.
+
       // store form data for submission in urlencoded format
       let data = $(this).serialize();
+
       // clear text input
       $(this).children("textarea").val("")
+
       // submit data and when done, reload tweets.
       $.post("/tweets", data).done(function(response){
         loadTweets();
       });
+
     }  else if ($text.length > 140){
       submissionError("That's too long!");
     } else {
@@ -64,17 +67,20 @@ $(document).ready(function(){
     let $tweet = $("<div>").text(tweetData.content.text);
     let $footer = $("<footer>");
 
+    let likeActive = tweetData.like ? " like-active" : "";
+
     // append nodes to create tree off article node
-    $header.appendTo($article);
     $avatar.appendTo($header);
     $username.appendTo($header);
     $handle.appendTo($header);
+
+    $header.appendTo($article);
     $tweet.appendTo($article);
     $footer.appendTo($article);
 
     // add footer data
     $("<span>" + daysAgo(tweetData.created_at) + "</span>").appendTo($footer);
-    $("<span>&#9873; &#11156; &#9829;</span>").addClass("actions").appendTo($footer);
+    $(`<span class="like${likeActive}">&#9829;</span>`).data("mongo-id", tweetData._id).appendTo($(`<span class="actions">&#9873; &#11156;</span>`).appendTo($footer));
 
     // returns complete tree of jQuery objects, ready for insertion into the DOM.
     return $article;
@@ -84,7 +90,6 @@ $(document).ready(function(){
   // returns "Today", "Yesterday", or 2, 3, 4...
   function daysAgo(date){
     let difference = (Date.now() - date) / 86400000;
-    console.log(`difference = ${difference}`);
     if(difference <= 1){
       return "Today";
     } else if(difference <= 2){
@@ -110,13 +115,28 @@ $(document).ready(function(){
     $('#tweets-container').replaceWith($newTweets);
   }
 
+  // toggles the "like" heart immediately in the DOM, and also updates database in background
+  function toggleLike($like){
+    $like.toggleClass("like-active");
+    let id = $like.data("mongo-id");
+    $.post(`/tweets/${id}/like`, "");
+  }
+
   // retrieve tweets from server
   function loadTweets(){
+    // load tweets from server
     $.getJSON("/tweets").done(function(tweets){
+      // generate and insert tweets into DOM
       renderTweets(tweets);
+
+      // add click handler for "like" buttons. Needs to be in here to ensure tweet elements have been added to DOM.
+      $(".like").on("click", function(){
+        toggleLike($(this));
+      });
     })
   }
 
+  // fetches tweet on initial page load. Reloaded subsequently when new tweet is added.
   loadTweets();
 
 });
