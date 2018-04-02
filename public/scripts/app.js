@@ -32,7 +32,7 @@ $(document).ready(function(){
       let data = $(this).serialize();
 
       // clear text input
-      $(this).children("textarea").val("")
+      $(this).children("textarea").val("");
 
       // submit data and when done, reload tweets.
       $.post("/tweets", data).done(function(response){
@@ -121,7 +121,7 @@ $(document).ready(function(){
       let rounded = Math.round(difference / 31536000000);
       rounded == 1 ? s = "" : null ;
       return rounded + ` year${s} ago`;
-      
+
     }
 
   }
@@ -159,7 +159,7 @@ $(document).ready(function(){
       $(".like").on("click", function(){
         toggleLike($(this));
       });
-    })
+    });
   }
 
   // fetches tweet on initial page load. Reloaded subsequently when new tweet is added.
